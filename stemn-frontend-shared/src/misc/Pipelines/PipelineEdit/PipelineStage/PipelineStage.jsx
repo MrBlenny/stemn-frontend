@@ -4,21 +4,30 @@ import { Draggable } from 'react-beautiful-dnd'
 
 export default class PipelineStage extends Component {
   render() {
-    const { children } = this.props
+    // const { children } = this.props
     return (
-      <Draggable>
+      <Draggable draggableId="draggable-1" index={ 0 }>
         {(provided, snapshot) => (
           <div
-            innerRef={ provided.innerRef }
+            ref={ provided.innerRef }
             { ...provided.draggableProps }
+            { ...provided.dragHandleProps }
           >
-            <div isDragging={ snapshot.isDragging } { ...provided.dragHandleProps }>
-              Stage
-            </div>
-            { children }
+            <h4>My draggable</h4>
           </div>
         )}
       </Draggable>
     )
   }
 }
+
+// export default class PipelineStage extends Component {
+//   render() {
+//     // const { children } = this.props
+//     return (
+//       <div>
+//         Stage
+//       </div>
+//     )
+//   }
+// }

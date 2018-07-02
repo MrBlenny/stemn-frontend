@@ -42,12 +42,11 @@ export default class PipelineEdit extends Component {
         >
           {provided => (
             <div ref={ provided.innerRef } { ...provided.droppableProps }>
-              {pipeline.stages.map((key, index) => (
-                <div
-                  key={ key.label }
-                >
-                  here
-                </div>
+              {pipeline.stages.map((stage, index) => (
+                <PipelineStage
+                  key={ index }
+                  stage={ stage }
+                />
               ))}
             </div>
           )}
