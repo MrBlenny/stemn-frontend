@@ -8,6 +8,7 @@ import PreviewCode from './PreviewCode'
 import PreviewCadLoader from './PreviewCadLoader'
 import PreviewPdfLoader from './PreviewPdfLoader'
 import PreviewPcbLoader from './PreviewPcbLoader'
+import PipelineEdit from '../../Pipelines/PipelineEdit'
 import PreviewImage from './PreviewImage/PreviewImage'
 import PreviewGoogle from './PreviewGoogle/PreviewGoogle'
 import PreviewGdoc from './PreviewGdoc/PreviewGdoc'
@@ -36,6 +37,8 @@ export const Component = React.createClass({
 
     const getPreview = () => {
       const viewerType = getViewerType(file.name, file.provider)
+
+      return <PipelineEdit />
       
       if (fileData && fileData.error || fileRender && fileRender.error) {
         return (
