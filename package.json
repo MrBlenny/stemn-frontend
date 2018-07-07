@@ -1,6 +1,6 @@
 {
   "name": "stemn-frontend",
-  "version": "1.7.0",
+  "version": "1.0.0",
   "author": "David Revay <david@stemn.com>",
   "license": "MIT",
   "scripts": {
