@@ -19,10 +19,18 @@
     "url": "https://github.com/stemn/stemn-frontend/issues"
   },
   "homepage": "https://github.com/stemn/stemn-frontend#readme",
+  "dependencies": {
+    "react": "16.4.1",
+    "react-dom": "16.4.1"
+  },
   "devDependencies": {
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
     "babel-eslint": "7.2.3",
     "eslint": "4.5.0",
     "eslint-config-stemn": "git+https://git@github.com/stemn/eslint-config-stemn.git",
-    "eslint-plugin-cypress": "^2.0.1"
+    "eslint-plugin-cypress": "^2.0.1",
+    "ts-loader": "3",
+    "typescript": "2.9.2"
   }
 }

@@ -13,5 +13,8 @@
             "es2017",
             "dom"
         ],
+        "paths": {
+            "stemn-shared": ["src/stemn-frontend-shared/src"]
+        }
     }
 }
