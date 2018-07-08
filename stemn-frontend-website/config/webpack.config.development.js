@@ -42,9 +42,9 @@ module.exports = merge(config, {
         to: 'static',
       },
     ]),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendor'],
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: ['vendor'],
+    // }),
   ],
   module: {
     loaders: [
@@ -67,7 +67,7 @@ module.exports = merge(config, {
         include: [
           path.resolve(__dirname, '../src/client/assets/javascripts'),
           path.resolve(__dirname, '../src/client/assets/styles/modules'),
-          path.resolve(__dirname, '../node_modules/stemn-frontend-shared'),
+          path.resolve(__dirname, '../../stemn-frontend-shared'),
         ],
         loaders: [
           'style',

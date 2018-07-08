@@ -8,7 +8,7 @@ import cn from 'classnames'
 export default class Onboarding extends Component {
   render() {
     const { children, user } = this.props
-
+    
     return (
       <div>
         <Helmet>

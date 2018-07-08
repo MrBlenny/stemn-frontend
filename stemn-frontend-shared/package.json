@@ -21,7 +21,5 @@
     "react-waypoint": "^4.0.4"
   },
   "dependencies": {
-    "@types/react": "^16.4.6",
-    "@types/react-dom": "^16.0.6"
   }
 }

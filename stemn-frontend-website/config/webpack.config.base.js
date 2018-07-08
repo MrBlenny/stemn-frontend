@@ -24,10 +24,10 @@ module.exports = {
       path.join(__dirname, '../src/client/scripts'),
       path.join(__dirname, '../src/client/assets'),
       path.join(__dirname, '../src/client/assets/javascripts'),
-      'node_modules',
+      path.join(__dirname, '../node_modules'),
     ],
     alias: {
-      'stemn-shared': path.resolve(__dirname, '../node_modules/stemn-frontend-shared/src'),
+      'stemn-shared': path.resolve(__dirname, '../../stemn-frontend-shared/src'),
       theme: path.resolve(__dirname, '../src/client/assets/styles/modules/theme.css'),
       'route-actions': path.resolve(__dirname, '../src/client/assets/javascripts/pages/routeActions.js'),
       'lodash.get': path.resolve(__dirname, '../node_modules/lodash/get'),
@@ -71,7 +71,7 @@ module.exports = {
         test: /\.jsx?$/,
         include: [
           path.resolve(__dirname, '../src/client/assets/javascripts'),
-          path.resolve(__dirname, '../node_modules/stemn-frontend-shared'),
+          path.resolve(__dirname, '../../stemn-frontend-shared'),
           path.resolve(__dirname, '../node_modules/react-icons'),
           path.resolve(__dirname, '../node_modules/react-popover-wrapper'),
         ],
@@ -83,7 +83,7 @@ module.exports = {
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         include: [
-          path.resolve(__dirname, '../node_modules/stemn-frontend-shared/src/misc/FileList/filetype'),
+          path.resolve(__dirname, '../../stemn-frontend-shared/src/misc/FileList/filetype'),
         ],
         loader: 'url',
         query: {
@@ -94,7 +94,7 @@ module.exports = {
       {
         test: /\.(png|jpg|jpeg|gif|svg|mp4)$/,
         exclude: [
-          path.resolve(__dirname, '../node_modules/stemn-frontend-shared/src/misc/FileList/filetype'),
+          path.resolve(__dirname, '../../stemn-frontend-shared/src/misc/FileList/filetype'),
         ],
         loader: 'url',
         query: {
@@ -114,9 +114,4 @@ module.exports = {
       },
     ],
   },
-  postcss: () => [
-    autoprefixer({
-      browsers: ['last 2 versions'],
-    }),
-  ],
 }
