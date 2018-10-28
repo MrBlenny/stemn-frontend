@@ -10,7 +10,9 @@ import Pagination from 'stemn-shared/misc/Pagination'
 import Link from 'stemn-shared/misc/Router/Link'
 import { Helmet } from 'react-helmet'
 import LoadingOverlay from 'stemn-shared/misc/Loading/LoadingOverlay/LoadingOverlay.jsx'
+import Button from '@atlaskit/button'
 
+console.log(Button)
 
 export default class Home extends Component {
   filterOptions = [{
@@ -54,6 +56,7 @@ export default class Home extends Component {
         <Helmet>
           <title>Dashboard</title>
         </Helmet>
+        <Button.default isLoading>Test</Button.default>
         <SubHeader title="Dashboard" noResponsive>
           <div className="layout-column layout-align-center-center">
             <PopoverDropdown
