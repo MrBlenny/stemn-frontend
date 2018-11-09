@@ -1,5 +1,5 @@
 export const fetchFiles = (
-  { projectId, path, cacheKey }:
+  { projectId, path = '', cacheKey }:
   { projectId: string, path: string, cacheKey: string },
 ) => {
   return {
@@ -20,7 +20,7 @@ export const fetchFiles = (
 }
 
 export const exploreFolder = (
-  { folderId, provider, cacheKey }:
+  { folderId = '', provider, cacheKey }:
   { folderId: string, provider: string, cacheKey: string },
 ) => {
   return {
@@ -28,7 +28,7 @@ export const exploreFolder = (
     http: true,
     payload: {
       method: 'GET',
-      url: `/api/v1/remote/explore/${provider}/${folderId}`,
+      url: `/api/v1/remote/listFolder/${provider}/${folderId}`,
     },
     meta: {
       cacheKey,

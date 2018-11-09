@@ -1,11 +1,10 @@
-import http                  from 'axios'
-import getUuid               from 'stemn-shared/utils/getUuid.js'
-import { show as showToast } from '../Toasts/Toasts.actions.js'
-import { showModal, showConfirm } from '../Modal/Modal.actions.js'
-import { get }               from 'lodash'
-import { storeChange } from 'stemn-shared/misc/Store/Store.actions'
-import threadLabelsEditModalName from 'stemn-shared/misc/Threads/ThreadLabelsEditModal'
-import { addEvent, deleteEvent } from 'stemn-shared/misc/SyncTimeline/SyncTimeline.actions'
+import http from 'axios';
+import { storeChange } from 'stemn-shared/misc/Store/Store.actions';
+import threadLabelsEditModalName from 'stemn-shared/misc/Threads/ThreadLabelsEditModal';
+import { pickId } from 'stemn-shared/utils/pickId.js';
+
+import { showConfirm, showModal } from '../Modal/Modal.actions.js';
+import { show as showToast } from '../Toasts/Toasts.actions.js';
 
 //        return dispatch(addEvent({
 //          cacheKey: timelineCacheKey,
@@ -26,11 +25,7 @@ import { addEvent, deleteEvent } from 'stemn-shared/misc/SyncTimeline/SyncTimeli
 export function newThread({ projectId, thread }) {
   return (dispatch, getState) => {
     const threadDefault = {
-      users: [{
-        _id: getState().auth.user._id,
-        name: getState().auth.user.name,
-        picture: getState().auth.user.picture,
-      }],
+      users: [getState().auth.user._id],
     }
     return dispatch({
       type: 'THREADS/NEW_TASK',
@@ -136,7 +131,12 @@ export const updateThread = ({ thread }) => (dispatch, getState) => dispatch({
   payload: {
     method: 'PUT',
     url: `/api/v1/threads/${thread._id}`,
-    data: thread,
+    data: {
+      ...thread,
+      owner: pickId(thread.owner),
+      project: pickId(thread.project),
+      users: thread.users.map(pickId),
+    },
   },
   meta: {
     cacheKey: thread._id,
@@ -200,12 +200,12 @@ export function moveThread({ boardId, thread, destinationThread, destinationGrou
         type: 'THREADS/MOVE_TASK',
         payload: http({
           method: 'POST',
-          url: '/api/v1/threads/move',
+          url: `/api/v1/threads/${thread}/move`,
           data: {
-            board: boardId,
-            thread,
-            destinationGroup,
-            destinationThread,
+            boardId,
+            threadId: thread,
+            destinationGroupId: destinationGroup,
+            destinationThreadId: destinationThread,
             after,
           },
         }),
@@ -362,4 +362,3 @@ export function changeLayout({ boardId, layout }) {
     },
   }
 }
-
